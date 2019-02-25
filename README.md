@@ -57,25 +57,6 @@ public:
 ```
 Таким образом объект класса ```Json``` может являться либо Json-объектом, либо Json-массивом и может хранить в себе вложенные объекты класса ```Json```.
 
-Класс ```Json``` должен проходить unit-тесты из файла ```test.cpp``` на json-данных, приведённых выше:
-
-```cpp
-std::string json = <json-строка из примера выше>;
-
-Json student = Json::parse(json);
-EXPECT_EQ(std::any_cast<std::string>(object["lastname"]), "Ivanov");
-EXPECT_EQ(std::any_cast<bool>(object["islegal"]), false);
-EXPECT_EQ(std::any_cast<int>(object["age"]), 25);
-
-auto marks = std::any_cast<Json>(object["marks"]);
-EXPECT_EQ(std::any_cast<int>(marks[0]), 4);
-EXPECT_EQ(std::any_cast<int>(marks[1]), 5);
-
-auto address = std::any_cast<Json>(object["address"]);
-EXPECT_EQ(std::any_cast<std::string>(address["city"]), "Moscow");
-EXPECT_EQ(std::any_cast<std::string>(address["street"]), "Vozdvijenka");
-```
-
 # Задание 2
 Полученный в первом задании парсер необходимо обернуть в статическую библиотеку и продемонстрировать её использование в клиентском приложении.
 
